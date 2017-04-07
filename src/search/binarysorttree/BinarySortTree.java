@@ -86,6 +86,47 @@ public class BinarySortTree<Key extends Comparable<Key>,Value> {
 		}
 		return x.value;
 	}
+	
+	//查找排名为k的键(树中有k个小于它的键)
+	public Key select(int k){
+		return select(root,k);
+	}
+	
+	private Key select(Node x,int k){
+		if(k>=size() || x==null){
+			return null;
+		}
+		int N = size(x.left);
+		if(N==k){
+			return x.key;
+		}else if(N>k){
+			return select(x.left,k);
+		}else{
+			return select(x.right,k-N-1);
+		}
+		
+	}
+	
+	//向下取整
+	public Key floor(Key key){
+		return floor(root,key);
+	}
+	
+	private Key floor(Node x,Key key){
+		if(x==null){
+			return null;
+		}
+		
+		int i = x.key.compareTo(key);
+		if(i==0){
+			return x.key;
+		}else if(i>0){
+			return floor(x.left,key);
+		}else{
+			return floor(x.right,key)==null ? x.key:floor(x.right,key);
+		}
+	}
+	
 	public static void main(String[] args){
 		BinarySortTree<Integer,String> bst = new BinarySortTree<Integer,String>();
 		bst.put(1, "1");
@@ -104,5 +145,7 @@ public class BinarySortTree<Key extends Comparable<Key>,Value> {
 		System.out.println(bst.min());
 		System.out.println(bst.max());
 		
+		System.out.println(bst.select(5));
+		System.out.println(bst.floor(89));
 	}
 }
