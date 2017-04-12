@@ -67,22 +67,34 @@ public class BinarySortTree<Key extends Comparable<Key>,Value> {
 		else return x.value;
 	}
 	
-	public Value min(){
-		return min(root);
+	//取得最小的key的Value值
+	public Value minNodeValue(){
+		return minNodeValue(root);
 	}
-	private Value min(Node x){
+	private Value minNodeValue(Node x){
 		if(x.left!=null){
-			return min(x.left);
+			return minNodeValue(x.left);
 		}
 		return x.value;
 	}
 	
-	public Value max(){
-		return max(root);
+	//取得最小的key的Node
+	public Node min(){
+		return min(root);
 	}
-	private Value max(Node x){
+	private Node min(Node x){
+		if(x.left!=null){
+			return min(x.left);
+		}
+		return x;
+	}
+	
+	public Value maxNodeValue(){
+		return maxNodeValue(root);
+	}
+	private Value maxNodeValue(Node x){
 		if(x.right!=null){
-			return max(x.right);
+			return maxNodeValue(x.right);
 		}
 		return x.value;
 	}
@@ -116,7 +128,6 @@ public class BinarySortTree<Key extends Comparable<Key>,Value> {
 		if(x==null){
 			return null;
 		}
-		
 		int i = x.key.compareTo(key);
 		if(i==0){
 			return x.key;
@@ -127,25 +138,89 @@ public class BinarySortTree<Key extends Comparable<Key>,Value> {
 		}
 	}
 	
+	//删除二叉树中最小的结点
+	public void deletemin(){
+		//需要考虑根结点为最小的情况
+		root = deletemin(root);
+	}
+	//删除以node x为根结点的二叉树中最小的结点
+	private Node deletemin(Node x){
+		if(x.left == null){
+			return x.right;
+		}
+		else{
+			x.left = deletemin(x.left);
+			return x;
+		}
+	}
+	
+	//删除二叉树中指定key的结点
+	public void delete(Key k){
+		root = delete(root , k);
+	}
+	
+	//删除以x为结点的二叉树中，key为k的结点
+	private Node delete(Node x ,Key k){
+		int comp = x.key.compareTo(k);
+		if(comp>0){
+			x.left = delete( x.left , k);
+			return x;
+		}else if(comp<0){
+			x.right = delete( x.right , k);
+			return x;
+		}else{
+			if(x.right==null){
+				return x.left;
+			}else{
+				Node n = min(x.right);
+				n.right = deletemin(x.right);
+				n.left = x.left;
+				return n;
+			}	
+		}
+	}
+	
+	//中序遍历打印二叉树
+	public void print(){
+		print(root);
+	}
+	
+	public void print(Node x){
+		if(x.left != null){
+			print(x.left);
+		}
+		System.out.print(x.key+"|");
+		if(x.right != null){
+			print(x.right);
+		}
+	}
+	
 	public static void main(String[] args){
 		BinarySortTree<Integer,String> bst = new BinarySortTree<Integer,String>();
 		bst.put(1, "1");
+		bst.put(333, "333");
+		bst.put(331, "331");
+		bst.put(322, "322");
 		bst.put(22, "22");
 		bst.put(2, "2");
 		bst.put(45, "45");
 		bst.put(21, "21");
-		bst.put(333, "333");
-		bst.put(331, "331");
-		bst.put(322, "322");
 		bst.put(62, "62");
 		bst.put(85, "85");
 		bst.put(31, "31");
 		bst.put(33, "33");
 		
-		System.out.println(bst.min());
-		System.out.println(bst.max());
-		
-		System.out.println(bst.select(5));
-		System.out.println(bst.floor(89));
+//		System.out.println(bst.minNodeValue());
+//		System.out.println(bst.maxNodeValue());
+//		
+//		System.out.println(bst.select(5));
+//		System.out.println(bst.floor(89));
+		bst.print();
+		bst.deletemin();System.out.println();
+		bst.print();
+		bst.delete(31);System.out.println();
+		bst.print();
+		bst.delete(333);System.out.println();
+		bst.print();
 	}
 }
