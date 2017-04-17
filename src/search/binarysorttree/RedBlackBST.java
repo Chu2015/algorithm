@@ -29,20 +29,32 @@ public class RedBlackBST <Key extends Comparable<Key>,Value> {
 	}
 	
 	private Node rotateLeft(Node h){
-		return null;
+		Node x = h.right;
+		h.right = x.left;
+		x.left = h;
+		x.color = h.color;
+		h.color = Red;
+		return x;
 	}
 	
 	private Node rotateRight(Node h){
-		return null;
+		Node x = h.left;
+		h.left = x.right;
+		x.right = h;
+		x.color = h.color;
+		h.color = Red;
+		return x;
 	}
 	
 	private void flipColors(Node h){
-		
+		h.left.color = Black;
+		h.right.color = Black;
+		h.color = Red;
 	}
 	
 	public void put(Key key,Value value){
 		put(root,key,value);
-		
+		root.color = Black;
 	}
 	
 	private Node put(Node n,Key key,Value value){
@@ -58,16 +70,18 @@ public class RedBlackBST <Key extends Comparable<Key>,Value> {
 			n.value = value;
 		}
 		
-		if(n.left.color == Black || n.left == null && n.right.color == Red ){
+		if(n.left.color != Red && n.right.color == Red ){
 			return rotateLeft(n);
 		}
-		if(){
-			
+		if(n.left.color == Red && n.left.left.color == Red){
+			return rotateRight(n);
 		}
-		if(){
-			
+		if(n.left.color == Red && n.right.color == Red){
+			flipColors(n);
 		}
+		n.N = n.left.N + n.right.N + 1;
 		return n;
 	}
+	
 	
 }
