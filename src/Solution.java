@@ -13,6 +13,7 @@ public class Solution {
 	        }
 	        return min(left,right);
 	    }
+	    
 	    private Integer min(Integer a,Integer b){
 	        if(a==null && b==null){
 	            return null;
@@ -25,15 +26,37 @@ public class Solution {
 	        }
 	    }
 	    
-	    public static void main(String[] args){
-	    	TreeNode root = new TreeNode(1);
-	    	root.right = new TreeNode(3);
-	    	root.right.left = new TreeNode(2);
-	    	
-	    	Solution s= new Solution();
-	    	System.out.println(s.getMinimumDifference(root));
-	    	
+	    public void rotate(int[] nums, int k) {
+	        k = k%nums.length;
+	        if(k==0){
+	        	return;
+	        }
+	        int l = nums.length;
+	        for(int i=0 ; i<l/2 ; i++){
+	            swap(i,l-1-i,nums);
+	        }
+	        for(int i=0 ; i<k/2 ; i++){
+	            swap(i,k-1-i,nums);
+	        }
+	        for(int i=k ; i<(l+k)/2;i++){
+	            swap(i,l-1+k-i,nums);
+	        }
 	    }
+	    private void swap(int i,int j,int[] nums){
+	    	int temp = nums[i];
+	    	nums[i] = nums[j];
+	    	nums[j] = temp;
+	
+	    }
+	    public static void main(String[] args){
+	    	int[] nums = {1};
+	    	Solution s= new Solution();
+	    	s.rotate(nums, 0);
+	    	for(int i :nums){
+	    		System.out.print(i+",");
+	    	}
+	    }
+
 }
 
 class TreeNode {
