@@ -83,5 +83,10 @@ public class RedBlackBST <Key extends Comparable<Key>,Value> {
 		return n;
 	}
 	
-	
+	public void deleteMin(){
+		deleteMin(root);
+	}
+	private Node deleteMin(Node n){
+		return null;
+	}
 }
