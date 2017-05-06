@@ -13,7 +13,7 @@ public class RedBlackBST <Key extends Comparable<Key>,Value> {
 		boolean color;
 		Key key;
 		Value value;
-		int N;//结点个数
+		int N = 0;//结点个数
 		
 		Node(Key key,Value value,boolean color,int N){
 			this.key = key;
@@ -28,6 +28,12 @@ public class RedBlackBST <Key extends Comparable<Key>,Value> {
 		return n.color == Red;
 	}
 	
+	private int sizeOf(Node n){
+		if(n == null){
+			return 0;
+		}
+		return n.N;
+	}
 	private Node rotateLeft(Node h){
 		Node x = h.right;
 		h.right = x.left;
@@ -53,15 +59,15 @@ public class RedBlackBST <Key extends Comparable<Key>,Value> {
 	}
 	
 	public void put(Key key,Value value){
-		put(root,key,value);
+		root = put(root,key,value);
 		root.color = Black;
 	}
 	
 	private Node put(Node n,Key key,Value value){
 		if(n == null){
-			return new Node(key, value, Red, 1);
+			return new Node(key, value, Red, 1);//新插入的结点颜色为红
 		}
-		int comp = root.key.compareTo(key);
+		int comp = n.key.compareTo(key);
 		if(comp>0){
 			n.left = put(n.left,key,value);
 		}else if(comp<0){
@@ -70,23 +76,92 @@ public class RedBlackBST <Key extends Comparable<Key>,Value> {
 			n.value = value;
 		}
 		
-		if(n.left.color != Red && n.right.color == Red ){
-			return rotateLeft(n);
+		if(!isRed(n.left) && isRed(n.right) ){
+			//wrong: return rotateLeft(n);
+			n = rotateLeft(n);
 		}
-		if(n.left.color == Red && n.left.left.color == Red){
-			return rotateRight(n);
+		if(isRed(n.left) && isRed(n.left.left)){
+			//wrong: return rotateLeft(n);
+			n = rotateRight(n);
 		}
-		if(n.left.color == Red && n.right.color == Red){
+		if(isRed(n.left) && isRed(n.right)){
 			flipColors(n);
 		}
-		n.N = n.left.N + n.right.N + 1;
+		n.N = sizeOf(n.left) + sizeOf(n.right) + 1;
 		return n;
 	}
 	
+	//删除最小值
 	public void deleteMin(){
-		deleteMin(root);
+		if(!isRed(root.left) && !isRed(root.right)){
+			root.color = Red;
+		} //如果根结点是一个2结点，将结点颜色设为红，
+		root = deleteMin(root);
+		if(root!=null) root.color = Black;
 	}
 	private Node deleteMin(Node n){
-		return null;
+		if(n.left == null){
+			return null;
+		}
+		if(!isRed(n.left) && !isRed(n.left.left)){ //如果左节点为2结点
+			 n = moveRedLeft(n); //把红色带给左边
+		}
+		n.left = deleteMin(n.left);
+		
+		return balance(n);
+	}
+
+	private Node moveRedLeft(Node n){
+		flipColors2(n);
+		if(isRed(n.right.left)){
+			n.right = rotateRight(n.right);
+			n = rotateLeft(n);
+		}
+		return n;
+	}
+	private void flipColors2(Node n){
+		n.left.color = Red;
+		n.right.color = Red;
+		n.color = Black;
+	}
+	
+	private Node balance(Node n) {
+		if(!isRed(n.left) && isRed(n.right) ){//左边不为红，右边为红，左旋转
+			n = rotateLeft(n);
+		}
+		if(isRed(n.left) && isRed(n.left.left)){//左边、左边的左边都为红，右旋转
+			n = rotateRight(n);
+		}
+		if(isRed(n.left) && isRed(n.right)){//左边，右边都为红，颜色转换
+			flipColors(n);
+		}	
+		n.N = sizeOf(n.left) + sizeOf(n.right) + 1;
+		return n;
+	}
+	
+	public void print(){
+		print(root);
+	}
+	
+	public void print(Node x){
+		if(x.left != null){
+			print(x.left);
+		}
+		System.out.print(x.key+"|");
+		if(x.right != null){
+			print(x.right);
+		}
+	}
+	public static void main(String[] args){
+		RedBlackBST<Integer,String> RBbst = new RedBlackBST<Integer,String>();
+		RBbst.put(1, "1");
+		RBbst.put(9, "9");
+		RBbst.put(8, "8");
+		RBbst.put(7, "7");
+		
+		RBbst.print();
+		RBbst.deleteMin();System.out.println();
+		RBbst.print();
+		
 	}
 }
