@@ -2,7 +2,7 @@ package sort.heapsort;
 
 public class HeapSort {
 	
-	
+	//下沉构造最大二叉堆
 	private static void sink(int[] a,int key,int end){
 		while(key*2<=end){
 			int child =key*2;
@@ -34,7 +34,7 @@ public class HeapSort {
 	}
 	
 	public static void main(String arg[]){
-		int[] c = {999,3,2,34,42,23,43,23,23,34,342,67,78};
+		int[] c = {1,2,3,4,5,6,7,8};
 		sort(c);
 		for(int num : c){
 			System.out.println(num+"_");
