@@ -50,6 +50,7 @@ public class Solution {
 	
 	    }
 	    public static void main(String[] args){
+	    	int[]a = new int[]{1,2,3};
 	    	int[] nums = {1};
 	    	Solution s= new Solution();
 	    	s.rotate(nums, 0);
