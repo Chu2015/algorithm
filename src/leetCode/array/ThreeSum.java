@@ -1,30 +1,39 @@
 package leetCode.array;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
 public class ThreeSum {
 	 public List<List<Integer>> threeSum(int[] nums) {
-         HashSet set = new HashSet();
+		 Arrays.sort(nums);
+         
 		   List result = new ArrayList();
 		   for(int i = 0 ; i<nums.length;i++){
+			   if(i!=0 && nums[i] == nums[i-1]){
+				   continue;
+			   }
 			   int targetSum = 0 - nums[i];
 			   HashMap map = new HashMap();
+			   
+			   
 			   for(int j=i+1; j<nums.length;j++){
+			       if(j==i+1){
+			           map.put(nums[j], j);
+			           continue;
+			       }
+				   if(j!=i+1 && nums[j] == nums[j-1]){
+					   continue;
+				   }
 				   int target = targetSum - nums[j];
 				   if(map.containsKey(target)){
-				       if(!(set.contains(nums[i]) && set.contains(nums[j]) && set.contains(target))){
-						   set.add(nums[i]);
-						   set.add(nums[j]);
-						   set.add(target);
 				           List triplets = new ArrayList();
 					       triplets.add(nums[i]);
 					       triplets.add(nums[j]);
 					       triplets.add(target);
 					       result.add(triplets);
-				       }
 				   }else{
 					   map.put(nums[j], j);
 				   }
@@ -32,7 +41,9 @@ public class ThreeSum {
 		   }
 		   return result;
 	   }
+
 	    public static void main(String[] args){
 	    	List list = new ThreeSum().threeSum(new int[]{-1, 0, 1, 2, -1, -4});
+	    	System.out.println(list);
 	    }
 }

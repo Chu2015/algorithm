@@ -3,6 +3,7 @@ package leetCode.linkedList;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
 
+
 public class LinkedList {
 	public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int a = 0;
@@ -132,18 +133,22 @@ public class LinkedList {
     
     
     public static void main(String[] args){
-    	LinkedList a2n = new LinkedList();
+    	SwapPairs a2n = new SwapPairs();
     	
     	ListNode l1 = new ListNode(1);
     	l1.next = new ListNode(2);
     	l1.next.next =  new ListNode(3);
+    	l1.next.next.next = new ListNode(4);
     	
-    	ListNode l2 = new ListNode(4);
+     	ListNode l2 = new ListNode(4);
     	l2.next = new ListNode(5);
     	l2.next.next =  new ListNode(6);
     	
- //   	ListNode result = a2n.mergeTwoLists(l1, l2);
-
+    	ListNode result = a2n.swapPairs(l1);
+    	while(result != null){
+        	System.out.println(result.val);
+    		result = result.next;
+    	}
     }
 }
 
