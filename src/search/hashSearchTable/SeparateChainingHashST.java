@@ -6,6 +6,7 @@ public class SeparateChainingHashST<Key,Value> {
 	private int M;
 	private SequentialSearchST<Key,Value>[] st;
 	
+	//默认槽的个数为997
 	public SeparateChainingHashST(){
 		this(997);
 	}
@@ -30,5 +31,6 @@ public class SeparateChainingHashST<Key,Value> {
 		return (Value)st[hash(key)].get(key);
 	}
 }
+
 
 
