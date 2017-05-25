@@ -1,4 +1,4 @@
-package leecCode.heap;
+package leetCode.heap;
 
 public class KthLargestElementinanArray {
 
