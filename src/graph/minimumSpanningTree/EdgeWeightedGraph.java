@@ -81,4 +81,13 @@ public class EdgeWeightedGraph {
         EdgeWeightedGraph G = new EdgeWeightedGraph(in);
         StdOut.println(G);
     }
+    
+    public int V() {
+        return V;
+    }
+    
+    public int E() {
+        return E;
+    }
+    
 }
