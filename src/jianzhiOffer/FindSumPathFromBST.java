@@ -21,32 +21,17 @@ class TreeNode {
 public class FindSumPathFromBST {
 	
 	public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
+		if(root==null){
+			return null;
+		}
 		ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
 		Stack<Integer> stack = new Stack<Integer>();
-//		stack.add(root);		
-//		//非递归的后序遍历
-//		while(stack!=null){
-//			while(root!=null && root.left!=null){
-//				root = root.left;
-//				stack.add(root);
-//			}
-//
-//			TreeNode cur = stack.peek();
-//			if(cur.right!=null){
-//				root = cur.right;
-//				cur.right = null;
-//			}else{
-//				root = null;
-//				TreeNode pre = stack.pop();
-//			}
-//			
-//		}
 		
-		//非递归的前序遍历
-		FindPath(root, stack, list, target,root.val);
-			
+		//闈為�褰掔殑鍓嶅簭閬嶅巻
+		FindPath(root, stack, list, target,0);
 		
-		return null;
+		
+		return list;
 	}
 	
 	public void FindPath(TreeNode node,Stack<Integer> stack,ArrayList<ArrayList<Integer>> listoflist,int sum,int currentsum){
@@ -55,9 +40,11 @@ public class FindSumPathFromBST {
 			if(node.val == sum-currentsum){
 				ArrayList<Integer> list = new ArrayList<Integer>(stack);
 				listoflist.add(list);
+				stack.pop();
 				return;
 			}else{
-				
+				stack.pop();
+				return;
 			}
 		}
 		
@@ -67,12 +54,26 @@ public class FindSumPathFromBST {
 		if(node.right != null){
 			FindPath(node.right ,stack,listoflist,sum, currentsum+node.val);
 		}
+		stack.pop();
 	}
 	
 	public boolean isleaf(TreeNode node){
 		return node.left==null && node.right==null;
 	}
-	//递归
+	
+	public static void main(String args[]){
+		FindSumPathFromBST fsp = new FindSumPathFromBST();
+		
+//		TreeNode root = new TreeNode(10);
+//		root.left = new TreeNode(5);
+//		root.right = new TreeNode(12);
+//		root.left.left = new TreeNode(4);
+//		root.left.right = new TreeNode(7);
+		
+		List list = fsp.FindPath(new TreeNode(1),0);
+		return;
+	}
+	//閫掑綊
 //	public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
 //		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
 //		if(root == null){
@@ -95,4 +96,33 @@ public class FindSumPathFromBST {
 //		return result;
 //    }
 	
+	
+//	public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
+//		ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
+//		Stack<Integer> stack = new Stack<Integer>();
+////		stack.add(root);		
+////		//闈為�褰掔殑鍚庡簭閬嶅巻
+////		while(stack!=null){
+////			while(root!=null && root.left!=null){
+////				root = root.left;
+////				stack.add(root);
+////			}
+////
+////			TreeNode cur = stack.peek();
+////			if(cur.right!=null){
+////				root = cur.right;
+////				cur.right = null;
+////			}else{
+////				root = null;
+////				TreeNode pre = stack.pop();
+////			}
+////			
+////		}
+//		
+//		//闈為�褰掔殑鍓嶅簭閬嶅巻
+//		FindPath(root, stack, list, target,root.val);
+//			
+//		
+//		return null;
+//	}
 }
