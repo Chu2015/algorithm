@@ -29,7 +29,7 @@ public class QuickSort {
 			while(array[lo]<=key && lo<hi){
 				lo++;
 			}
-			array[lo]=array[lo];
+//			array[lo]=array[lo];
 		}
 		array[hi]=key;//array[lo]=key;
 		return hi;

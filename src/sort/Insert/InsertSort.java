@@ -1,8 +1,11 @@
-package sort.Insert;
+   package sort.Insert;
 
 public class InsertSort {
 
 	public static void sort(int[] a){
+		if(a==null || a.length==0){
+			return;
+		}
 		for(int i=1;i<a.length;i++){
 			int key = a[i];
 			int j;
@@ -10,11 +13,6 @@ public class InsertSort {
 				a[j+1] = a[j];
 			}
 			a[j+1] = key;
-//			int j=i-1;
-//			while(j>=0 && a[j]>key){
-//				a[j+1] = a[j];
-//				j--;
-//			}
 		}
 	}
 	

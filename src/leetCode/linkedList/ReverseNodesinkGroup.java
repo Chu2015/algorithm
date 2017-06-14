@@ -8,6 +8,8 @@ public class ReverseNodesinkGroup {
         ListNode move = new ListNode(0);
         move.next = head;
         int a = k;
+        
+        //将move移动到第K个，如果链表个数小于K个，返回表头
         while(k-->0){
         	move = move.next;
         	if(move == null){
@@ -26,6 +28,8 @@ public class ReverseNodesinkGroup {
         	temp.next = left.next;
         	left.next = temp;
         }
+        
+        //递归
         right.next = reverseKGroup(right.next,a);
         
 		return left.next;
