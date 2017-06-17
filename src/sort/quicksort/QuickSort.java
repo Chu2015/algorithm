@@ -17,7 +17,37 @@ public class QuickSort {
 		
 		quickSort(array,index+1,hi);
 	}
+	public static int getLoNumToRightPosition2(int[] array,int lo,int hi){
+		int key  = array[lo];
+		int i = lo+1;
+		int j = hi;
+		while(i<=j){
+			while(array[i] < key){
+				if(i>=j){
+					break;
+				}
+				i++;
+			}
+			while(array[j] > key){
+				if(i>=j){
+					break;
+				}
+				j--;
+			}
+			if(i>=j){
+				break;
+			}
+			exch(array,lo,hi);
+		}
+		exch(array,lo,j);
+		return j;
+	}
 	
+	private static void exch(int[] a,int lo,int hi){
+		int temp = a[lo];
+		a[lo] = a[hi];
+		a[hi] = temp;
+	}
 	public static int getLoNumToRightPosition(int[] array,int lo,int hi){
 		//øÏÀŸ≈≈–Ú∞Ê±æ2
 		int key = array[lo];

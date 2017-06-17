@@ -13,7 +13,7 @@ public class SingleNumber {
     }
     public static void main(String[] args){
     	SingleNumber  s = new SingleNumber();
-    	int[] nums = {1,1,3,4,4};
+    	int[] nums = {1,13,45,34,1,3,4,34,45,13,4,9,9};
     	System.out.println(s.singleNumber(nums));
     }
 }
