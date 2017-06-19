@@ -24,6 +24,21 @@ public class PrintListFromTailToHead {
         
     }
     
+    public ArrayList<Integer> printListFromTailToHead2(ListNode listNode) {
+    	ArrayList<Integer> list = new ArrayList<Integer>();
+		return printListFromTailToHead2(listNode,list);
+        
+    }
+    public ArrayList<Integer> printListFromTailToHead2(ListNode listNode ,ArrayList<Integer> list){
+    	if(listNode==null){
+    		return null;
+    	}
+    	list = printListFromTailToHead2(listNode.next , list);
+    	list.add(listNode.val);
+		return list;
+    	
+    }
+    
     public static void main(String[] args){
     	
     	PrintListFromTailToHead plfth = new PrintListFromTailToHead();

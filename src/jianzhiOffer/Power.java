@@ -40,10 +40,10 @@ public class Power {
     }
     
     public static void main(String[] args){
-    	long startTime=System.nanoTime();   //获取开始时间  
+    	long startTime=System.nanoTime();    
     	Power p = new Power();
     	System.out.println(p.Power(2, 1000));
-    	long endTime=System.nanoTime();   //获取开始时间  
+    	long endTime=System.nanoTime();    
     	System.out.println(endTime-startTime);
     }
 }

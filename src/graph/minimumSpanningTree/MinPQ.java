@@ -19,6 +19,9 @@
 
 package graph.minimumSpanningTree;
 
+import graph.undirectedGraph.StdIn;
+import graph.undirectedGraph.StdOut;
+
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
