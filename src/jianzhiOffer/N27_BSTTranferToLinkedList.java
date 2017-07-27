@@ -1,6 +1,6 @@
 package jianzhiOffer;
 
-public class BSTTranferToLinkedList {
+public class N27_BSTTranferToLinkedList {
 	
 	   public TreeNode Convert(TreeNode pRootOfTree) {
 		    if(pRootOfTree==null){
@@ -19,9 +19,6 @@ public class BSTTranferToLinkedList {
 
 	        if(pRootOfTree.right != null){
 	        	rightTree = Convert(pRootOfTree.right);
-	        	 while(rightTree.left != null){
-	 	        	rightTree = rightTree.left;
-	 	        }  
 	 	        rightTree.left = pRootOfTree;
 	 	        pRootOfTree.right = rightTree;
 	        }

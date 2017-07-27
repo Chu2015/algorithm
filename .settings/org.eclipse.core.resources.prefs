@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/graph/directedGraph/Diagraph.java=UTF-8
 encoding//src/graph/undirectedGraph/Graph.java=UTF-8
-encoding//src/jianzhiOffer/FindSumPathFromBST.java=UTF-8
+encoding//src/jianzhiOffer/GetMedian.java=UTF-8
+encoding//src/jianzhiOffer/N25_FindSumPathFromBST.java=UTF-8

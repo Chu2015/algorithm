@@ -2,7 +2,7 @@ package jianzhiOffer;
 
 import java.util.Stack;
 
-public class MinStack {
+public class N21_MinStack {
 
 	
 	
@@ -30,5 +30,10 @@ public class MinStack {
     
     public int min() {
         return stackhelper.peek();
+    }
+    
+    public static void main(String[] args){
+    	N21_MinStack n = new N21_MinStack();
+    	
     }
 }

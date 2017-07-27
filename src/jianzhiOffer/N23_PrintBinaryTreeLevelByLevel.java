@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PrintBinaryTreeLevelByLevel {
+public class N23_PrintBinaryTreeLevelByLevel {
 	
     public ArrayList<Integer> PrintFromTopToBottom(TreeNode root) {
     	ArrayList<Integer> list = new ArrayList<Integer>();
@@ -35,7 +35,7 @@ public class PrintBinaryTreeLevelByLevel {
     	root.right.left = new TreeNode(6);
     	root.right.right  = new TreeNode(7);
     	
-    	PrintBinaryTreeLevelByLevel p = new PrintBinaryTreeLevelByLevel();
+    	N23_PrintBinaryTreeLevelByLevel p = new N23_PrintBinaryTreeLevelByLevel();
     	
     	ArrayList<Integer> list = p.PrintFromTopToBottom(root);
     	

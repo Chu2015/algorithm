@@ -77,7 +77,7 @@ public class SearchforaRange {
     public static void main(String[] args){
     	SearchforaRange s = new SearchforaRange();
     	int[] nums = {1,2,3,3,3,3,3,3,4,5,6};
-    	System.out.println(s.findTheFirstNumGreaterOrEqalToTheTarget(nums, 3));
+    	//System.out.println(s.findTheFirstNumGreaterOrEqalToTheTarget(nums, 3));
     	int[] result = s.searchRange(nums, 3);
     	for(int i: result){
     		System.out.println(i+",");

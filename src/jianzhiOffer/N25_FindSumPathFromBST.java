@@ -19,14 +19,15 @@ class TreeNode {
 
     
 }
-public class FindSumPathFromBST {
+public class N25_FindSumPathFromBST {
 	
 	public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {
-		if(root==null){
-			return null;
-		}
 		ArrayList<ArrayList<Integer>> list = new ArrayList<ArrayList<Integer>>();
 		Stack<Integer> stack = new Stack<Integer>();
+		
+		if(root==null){
+			return list;
+		}
 		
 		//闈為�褰掔殑鍓嶅簭閬嶅巻
 		FindPath(root, stack, list, target,0);
@@ -36,17 +37,18 @@ public class FindSumPathFromBST {
 	}
 	
 	public void FindPath(TreeNode node,Stack<Integer> stack,ArrayList<ArrayList<Integer>> listoflist,int sum,int currentsum){
+		//put current node into path stack
 		stack.add(node.val);
+		
+		//if current node is leafnode, check if this is the right path
+		//if yes,put it into result list,else pop current node
 		if(isleaf(node)){
 			if(node.val == sum-currentsum){
 				ArrayList<Integer> list = new ArrayList<Integer>(stack);
 				listoflist.add(list);
-				stack.pop();
-				return;
-			}else{
-				stack.pop();
-				return;
 			}
+			stack.pop();
+			return;
 		}
 		
 		if(node.left != null){
@@ -55,6 +57,7 @@ public class FindSumPathFromBST {
 		if(node.right != null){
 			FindPath(node.right ,stack,listoflist,sum, currentsum+node.val);
 		}
+		//current node is done,pop it
 		stack.pop();
 	}
 	
@@ -63,7 +66,7 @@ public class FindSumPathFromBST {
 	}
 	
 	public static void main(String args[]){
-		FindSumPathFromBST fsp = new FindSumPathFromBST();
+		N25_FindSumPathFromBST fsp = new N25_FindSumPathFromBST();
 		
 //		TreeNode root = new TreeNode(10);
 //		root.left = new TreeNode(5);
@@ -72,7 +75,7 @@ public class FindSumPathFromBST {
 //		root.left.right = new TreeNode(7);
 		
 		List list = fsp.FindPath(new TreeNode(1),0);
-		return;
+
 	}
 	//閫掑綊
 //	public ArrayList<ArrayList<Integer>> FindPath(TreeNode root,int target) {

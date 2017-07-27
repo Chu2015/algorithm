@@ -2,7 +2,7 @@ package jianzhiOffer;
 
 import java.util.HashMap;
 
-public class CloneComplexArray {
+public class N26_CloneComplexArray {
 	//my O(n^2)
     public RandomListNode Clone1(RandomListNode pHead){
     	if(pHead==null){
@@ -118,7 +118,7 @@ public class CloneComplexArray {
     	A.next.next.next.random = A.next;
     	A.next.random = A.next.next.next.next;
     	
-    	CloneComplexArray c = new CloneComplexArray();
+    	N26_CloneComplexArray c = new N26_CloneComplexArray();
     	RandomListNode  r = c.Clone(A);
     	
     	while(r!=null){

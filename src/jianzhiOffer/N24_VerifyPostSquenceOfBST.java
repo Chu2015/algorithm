@@ -1,6 +1,6 @@
 package jianzhiOffer;
 
-public class VerifyPostSquenceOfBST {
+public class N24_VerifyPostSquenceOfBST {
     public boolean VerifySquenceOfBST(int [] sequence) {
     	if(sequence!=null && sequence.length==0){
     		return false;
@@ -38,7 +38,7 @@ public class VerifyPostSquenceOfBST {
     }
     
     public static void main(String[] args){
-    	VerifyPostSquenceOfBST v = new VerifyPostSquenceOfBST();
+    	N24_VerifyPostSquenceOfBST v = new N24_VerifyPostSquenceOfBST();
     	int[] s ={5,7,6,9,11,10,8};
     	System.out.println(v.VerifySquenceOfBST(s));
     }

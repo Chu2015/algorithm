@@ -1,10 +1,8 @@
-package leetCode.DFS;
+package leetCode;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
-
-import leetCode.DFS.TreeNode;
 
 public class BinaryTreeInorderTraversal {
     public List<Integer> inorderTraversal(TreeNode root) {

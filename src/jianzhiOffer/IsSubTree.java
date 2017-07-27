@@ -36,6 +36,7 @@ public class IsSubTree {
     }
     //dicide if root2 is subtree of root1(both could be null)
 //    public boolean HasSubtree(TreeNode root1,TreeNode root2) {
+    	//确保进入迭代方法的是两个不为空的树
 //    	if(root2==null || root1==null){
 //    		return false;
 //    	}
@@ -44,15 +45,19 @@ public class IsSubTree {
 //    
       //dicide if root2 is subtree of root1( two not-null binaryTree)
 //    private boolean subHasSubTree(TreeNode root1,TreeNode root2){
+    	//边界条件的处理，如果root2已经比到空的地步，说明前面的都相同，已经成功
 //    	if(root2==null){
 //    		return true;
 //    	}
+    	//root2不为空，root1为空必然失败
 //    	if(root1==null){
 //    		return false;
 //    	}
+    	//第一处递归，针对当前结点，如果当前结点tree2和tree1值相同，再分别比较他们左子树和右子树
 //    	if(root1.val==root2.val && subHasSubTree(root1.left,root2.left) && subHasSubTree(root1.right ,root2.right)){
 //    		return true;
 //    	}
+    	//第二处递归，针对每个结点遍历，这里是先序遍历
 //		return subHasSubTree(root1.left,root2) || subHasSubTree(root1.right,root2);
 //    }
     

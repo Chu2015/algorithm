@@ -1,6 +1,7 @@
 package leetCode.linkedList;
 
 public class RemoveDuplicatesfromSortedListII {
+
     public ListNode deleteDuplicates(ListNode head) {
     	ListNode fixed = new ListNode(0);
         ListNode move = fixed;
@@ -30,6 +31,7 @@ public class RemoveDuplicatesfromSortedListII {
 
     	return head.next;
     }
+    //不必要的递归，如果不采用递归，只是多加了一个循环而已
     public ListNode deleteDuplicates2(ListNode head) {
     	if(head == null){
     		return null;

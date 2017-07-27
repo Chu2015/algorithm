@@ -41,8 +41,8 @@ public class KMP {
 	}
 	
     public static void main(String[] args) {
-        String pat = "AACAA";
-        String txt = "AABRAACADABRAACAAADABRA";
+        String pat = "AACA";
+        String txt = "BBBDDCCDBAABDDAABRAACADABRAACAAADABRAAADDBBBBBCCDBDCDCDCBBDBD";
 
         KMP kmp1 = new KMP(pat);
         int offset1 = kmp1.search(txt);
@@ -54,6 +54,5 @@ public class KMP {
         for (int i = 0; i < offset1; i++)
             StdOut.print(" ");
         StdOut.println(pat);
-
     }
 }

@@ -16,6 +16,10 @@ public class InsertSort {
 		}
 	}
 	
+	public static void sort(int[] a,int lo,int hi){
+
+	}
+	
 	public static void main(String[] args){
 		int[] c = {6,3,2,34,42,23,43,23,23,34,342,67,78};
 		sort(c);

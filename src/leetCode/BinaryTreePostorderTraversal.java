@@ -18,11 +18,11 @@ public class BinaryTreePostorderTraversal {
 	            
 	            current = stack.peek();
 	            if(current.right!=null){
-	            	root = current.right;  //将当前结点设为它的右节点，循环加入栈中
-	            	current.right = null;
-	            }else{
-	            	current = stack.pop(); //弹出当前结点并加入list
-		            list.add(current.val);
+	            	root = current.right;  
+	            	current.right = null;	//将右边置为空，以便下一次弹出
+	            }else{						//此时右边已经遍历完毕，而左边由于用stack存储，必然左边的结点也已经处理完毕，可以弹出
+	            	current = stack.pop();  //弹出当前结点并加入list
+		            list.add(current.val);	
 	            }
 	        }
 	        return list;     

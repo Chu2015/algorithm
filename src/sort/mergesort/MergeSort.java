@@ -27,10 +27,13 @@ public class MergeSort {
 		int i = lo;
 		int j = mid+1;
 		for(int k=lo ;k<=hi;k++){
+			//前半个数组已经完毕
 			if(i>mid){
 				a[k]=copy[j];
 				j++;
-			}else if(j>hi){
+			}
+			//后半个数组已经完毕
+			else if(j>hi){
 				a[k]=copy[i];
 				i++;
 			}

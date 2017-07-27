@@ -2,20 +2,46 @@ package sort.quicksort;
 
 import java.lang.ref.SoftReference;
 
+import sort.Insert.InsertSort;
+
 public class QuickSort {
 	
 	SoftReference<String> sr = new SoftReference<String>(new String("java"));
+	private static final int InsertThredhold = 5;
 	
 	public static void quickSort(int[] array,int lo,int hi){	
 
 		if(lo >= hi){
 			return;
 		}
-		int index = getLoNumToRightPosition(array,lo,hi);
+		
+		//”≈ªØ∞Ê±æ
+//		if(hi-lo<=InsertThredhold){
+//			InsertSort.sort(array,lo,hi);
+//		    return;
+//	    }
+		int index = partion(array,lo,hi);
 
 		quickSort(array,lo,index-1);
 		
 		quickSort(array,index+1,hi);
+	}
+	public static int partion(int[] array, int start, int end) {
+    	int lo = start;
+    	int hi = end;
+    	while(lo<hi){
+    		while(array[lo]<=array[start] && lo<end){
+    			lo++;
+    		}
+    		while(array[hi]>=array[start] && hi>start){
+    			hi--;
+    		}
+    		if(lo<hi){
+    			exch(array,lo,hi);
+    		}
+    	}
+    	exch(array,start,hi);
+		return hi;
 	}
 	public static int getLoNumToRightPosition2(int[] array,int lo,int hi){
 		int key  = array[lo];
@@ -88,8 +114,9 @@ public class QuickSort {
 	}
 	
 	public static void main(String[] args){
-		int[] c = {6,3,2,34,42,23,43,23,23,34,342,67,78};
+		int[] c = {19,4,5,7,99,34,53,111};
 		quickSort(c , 0 ,c.length-1);
+//		partion(c,0,c.length-1);
 		for(int num : c){
 			System.out.println(num+"_");
 		}

@@ -1,6 +1,6 @@
 package jianzhiOffer;
 
-public class BinaryTreeMirror {
+public class N19_BinaryTreeMirror {
 //    public void Mirror(TreeNode root) {
 //        submirror(root);
 //    }
@@ -42,7 +42,7 @@ public class BinaryTreeMirror {
     }
     
     public static void main(String[] args){
-    	BinaryTreeMirror a = new BinaryTreeMirror();
+    	N19_BinaryTreeMirror a = new N19_BinaryTreeMirror();
     	
     	TreeNode root2 = new TreeNode(8);
     	root2.left = new TreeNode(9);

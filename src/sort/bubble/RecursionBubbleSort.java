@@ -3,11 +3,12 @@ package sort.bubble;
 public class RecursionBubbleSort {
 
 	public static void sort(int[] a,int lo,int hi){
-		
+		if(lo>=hi){
+			return;
+	    }
 		findMax(a,lo,hi);
-		if(lo<hi){
-			sort(a,lo,hi-1);
-		}
+		sort(a,lo,hi-1);
+
 	}
 	public static void findMax(int[] a,int lo,int hi){
 		 for(int i=lo;i<hi;i++){
