@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 
 
-public class Test3 {
+public class TiaoTaiJie{
 		public static void main(String[] args) {
 			Scanner scanner = new Scanner(System.in);
 //			while (scanner.hasNext()) {
@@ -19,18 +19,24 @@ public class Test3 {
 			if (m == n) {
 				return 0;
 			}
-			int steps = m - n + 1;// 算上了起点和终点
-			int[] dp = new int[steps];// 规划的量：到达 每个位置需要的最小步数
-			dp[0] = 0; // 起点
+			int steps = m - n + 1;//台阶数(包含n和m)
+			//dp数组表示，达到此位置最少的步数
+			int[] dp = new int[steps];
+			dp[0] = 0; //数组边界
+			//初始化数组，表示无法达到
 			for (int i = 1; i < steps; i++) {
-				dp[i] = Integer.MAX_VALUE; // 初始化 表示后续位置都不能到达
+				dp[i] = Integer.MAX_VALUE; 
 			}
+			//每个阶段，数组指针向右移动一个
 			for (int i = 0; i < steps; i++) {
-				if (dp[i] == Integer.MAX_VALUE) { // 该位置不能像前走
+				//如果等于maxvalue，说明这个位置无法到达
+				if (dp[i] == Integer.MAX_VALUE) { 
 					dp[i] = 0;
 					continue;
 				}
-				ArrayList<Integer> list = getAppNums(i + n); // i+n才是石板号
+				//得到台阶的因数，台阶编号为i+n
+				ArrayList<Integer> list = getAppNums(i + n); 
+				//每个阶段下，对可以到达的位置更新
 				for (int j = 0; j < list.size(); j++) {
 					int x = list.get(j);
 					if (i + n + x <= m) {
@@ -44,7 +50,8 @@ public class Test3 {
 				return dp[steps-1];
 			}
 		}
-
+		
+		//求n的因数，除了1和n
 		public static ArrayList<Integer> getAppNums(int n) {
 			ArrayList<Integer> list = new ArrayList<Integer>();
 				for (int i = 2; i <= Math.sqrt(n); i++) {
