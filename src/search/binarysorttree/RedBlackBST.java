@@ -76,6 +76,7 @@ public class RedBlackBST <Key extends Comparable<Key>,Value> {
 			n.value = value;
 		}
 		
+		//对这条搜索路径上的所有结点进行三部检查
 		if(!isRed(n.left) && isRed(n.right) ){
 			//wrong: return rotateLeft(n);
 			n = rotateLeft(n);
