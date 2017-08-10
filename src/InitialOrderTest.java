@@ -1,5 +1,5 @@
 
-public class Test2 {
+public class InitialOrderTest {
     public static void main(String[] args) {
     	Object o = new Object();
         Son son = new Son();
@@ -20,13 +20,16 @@ class Grandpa {
     static{
     	System.out.println("初始化grandpa的静态区域");
     }
-    
+
     public Grandpa(int age) {
         System.out.println("grandpa is " + age + " years old.");
     }
 
     private Height height = new Height(1.5f);
-
+    {
+    	System.out.println("非静态代码块");
+    }
+    
     public static Gender gender = new Gender(true, "grandpa");
 }
 
