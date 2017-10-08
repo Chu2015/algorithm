@@ -1,8 +1,11 @@
+import java.util.LinkedList;
+
 
 public class FinallyTest {
 
 	public static String output="";
 	public static void foo(int i){
+		
 		try{
 			if(i==1){
 				throw new Exception();

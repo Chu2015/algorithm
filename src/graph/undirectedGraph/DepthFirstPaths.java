@@ -1,9 +1,12 @@
 package graph.undirectedGraph;
 
+//利用dfs查找图中的路径
 public class DepthFirstPaths {
-	
+	//标记这个点有没有到过
 	private boolean[] marked;
+	//edgeTo[v]=m,表示从m点到达的v点
 	private int[] edgeTo;
+	//起点
 	private final int s;
 	
 	public DepthFirstPaths(Graph G, int s){

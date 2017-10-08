@@ -9,7 +9,9 @@ public class CC {
 	public CC(Graph G){
 		marked = new boolean[G.V()];
 		id = new int[G.V()];
+		//对图中每个点进行遍历
 		for(int s=0; s<G.V();s++){
+			//碰到还没标记过的，旧dfs
 			if(!marked[s]){
 				count ++;	//每次到这，都表示一个新的连通分量被找到
 				dfs(G,s);

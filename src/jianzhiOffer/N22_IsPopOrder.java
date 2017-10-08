@@ -53,11 +53,13 @@ public class N22_IsPopOrder {
     	
     	for(int i=0;i<popA.length;i++){
     		int value = popA[i];
-    		//如果当前栈顶不是这个值，那么这个值还没有压入
+    		//如果当前栈顶不是这个值或者栈为空，那么这个值还没有压入
     		if(stack.isEmpty() || stack.peek()!=value){
+    			//如果辅助栈为空，返回false
     			if(stackhelper.isEmpty()){
     				return false;
     			}
+    			//while语句不断从辅助栈弹出，压入到栈中，知道有一个数等于当前值
     			Integer popvalue = stackhelper.pop();
     			while(popvalue!=value){
     				stack.push(popvalue);

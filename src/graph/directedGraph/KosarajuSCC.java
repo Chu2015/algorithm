@@ -15,8 +15,9 @@ public class KosarajuSCC {
 		Diagraph Greverse = G.reverse();
 		
 		//得到逆向图的逆反顺序
-		DepthFirstOrder dfs = new DepthFirstOrder(G);
-		Iterable<Integer> order = dfs.reversePost();
+			DepthFirstOrder dfs = new DepthFirstOrder(G);
+			Iterable<Integer> order = dfs.reversePost();
+
 		
 		//按照逆反序列进行深度优先搜索
 		for(int i : order){
@@ -25,6 +26,7 @@ public class KosarajuSCC {
 				dfs(G,i);	
 			}
 		}
+
 	}
 	
 	private void dfs(Diagraph G,int v){

@@ -41,14 +41,20 @@ public class BinarySortTree<Key extends Comparable<Key>,Value> {
 	private Node put(Node x,Key key,Value value){
 		if(x==null){
 			return new Node(key,value,1);
-		}else{
-			int a = key.compareTo(x.key);
-			if(a>0) x.right = put(x.right,key,value);
-			else if(a<0) x.left = put(x.left,key,value);
-			else x.value = value;
-			x.N = size(x.left)+size(x.right)+1; //更新每个结点的N（表示以该结点作为根的子树的总结点）
-			return x;
 		}
+		
+		int a = key.compareTo(x.key);
+		if(a>0) {
+			x.right = put(x.right,key,value);
+		}
+		else if(a<0) {
+			x.left = put(x.left,key,value);
+		}
+		else {x.value = value;}
+		
+		x.N = size(x.left)+size(x.right)+1; //更新每个结点的N（表示以该结点作为根的子树的总结点）
+		
+		return x;
 	}
 	
 	//获取键的值

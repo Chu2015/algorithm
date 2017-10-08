@@ -34,10 +34,7 @@ public class DirectedCycle {
 			if(!marked[w]){  
 				edgeTo[w] = s;
 				dfs(D,w);
-			}else{
-				if(!onStack[w]){  //如果这个已经到达的结点不是此条路径上的结点，那么不是有环图
-					return;
-				}
+			}else if(onStack[w]){ 
 				cycle = new Stack<Integer>();
 				for(int i= s; i!= w;i = edgeTo[i]){
 					cycle.push(i);

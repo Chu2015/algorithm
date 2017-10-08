@@ -51,12 +51,13 @@ public class MergeKLists {
 			tail.next = queue[0];
 			tail = tail.next;
 			queue[0] = queue[0].next;
+			//如果此链表为空，将最后一个node放到前面，然后下沉
 			if(queue[0] == null){
 				queue[0] = queue[N-1]; 
 				sink(0);
 				N--;
 			}else{
-
+			//如果此链表不为空，直接下沉
 				sink(0);
 			}
 		}
@@ -68,6 +69,7 @@ public class MergeKLists {
 		if(a == null){
 			return;
 		}
+		//每次插入一个节点，最小堆上游
 		queue[N] = a;
 		swim(N);
 		N++;

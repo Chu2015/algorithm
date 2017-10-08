@@ -1,6 +1,8 @@
 package jianzhiOffer;
 
-public class N19_BinaryTreeMirror {
+import java.util.Comparator;
+
+public class N19_BinaryTreeMirror implements Comparator{
 //    public void Mirror(TreeNode root) {
 //        submirror(root);
 //    }
@@ -56,4 +58,14 @@ public class N19_BinaryTreeMirror {
     	
     	a.print(root2);
     }
+
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public int compare(Object o1, Object o2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
