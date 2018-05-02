@@ -12,11 +12,11 @@ public class TwoSum {
 	    for (int i = 0; i < numbers.length; i++) {
 	    	int want = target-numbers[i];
 	        if (map.containsKey(want)) {
-	            result[1] = i + 1;
+	            result[1] = i;
 	            result[0] = map.get(want);
 	            return result;
 	        }
-	        map.put(numbers[i], i + 1); //key为值，value为index
+	        map.put(numbers[i], i); //key为值，value为index
 	    }
 	    return result;
 	}
