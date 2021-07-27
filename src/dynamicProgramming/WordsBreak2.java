@@ -15,7 +15,7 @@ public class WordsBreak2 {
 	        int len = s.length();
 	        Boolean[] dp = new Boolean[len+1];
 	        dp[0] = true;
-	        //¼ÇÂ¼ÒÔXX½áÎ²µÄ×Ö·û´®ÊÇ·ñ¿É·Ö£¬¶¯Ì¬¹æ»®
+	        //ï¿½ï¿½Â¼ï¿½ï¿½XXï¿½ï¿½Î²ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½Ç·ï¿½É·Ö£ï¿½ï¿½ï¿½Ì¬ï¿½æ»®
 	        for (int i = 1; i < s.length()+1; i++) {
 	            for (int j = i-1; j >= 0; j--) {
 	            	String w = s.substring(j,i);
@@ -30,6 +30,6 @@ public class WordsBreak2 {
 	                }
 	            }
 	        }
-	        return dp[len];
+	        return null;
 	    }
 }
