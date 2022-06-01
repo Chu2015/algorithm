@@ -22,41 +22,86 @@ public class N17_MergeTwoSortedList {
             return list1;
         }
 
-        ListNode result = list1.val <= list2.val ? list1 : list2;
+        ListNode result = null;
+        ListNode traverseNode = null;
+        ListNode staticNode = null;
+        if (list1.val <= list2.val) {
+            result = list1;
+            traverseNode = list1;
+            staticNode = list2;
+        } else {
+            result = list2;
+            traverseNode = list2;
+            staticNode = list1;
+        }
 
-        while (list1 != null && list2 != null) {
-            while (list1.next != null && list1.next.val <= list2.val) {
-                list1 = list1.next;
+        while (traverseNode != null && staticNode != null) {
+            while (traverseNode.next != null && traverseNode.next.val <= staticNode.val) {
+                traverseNode = traverseNode.next;
             }
-            ListNode temp = list1.next;
-            list1.next = list2;
-            list1 = temp;
-            while (list2.next != null && list2.next.val <= list1.val) {
-                list2 = list2.next;
-            }
-            ListNode temp2 = list2.next;
-            list2.next = list1;
-            list2 = temp2;
+            ListNode temp = traverseNode.next;
+            traverseNode.next = staticNode;
+            traverseNode = staticNode;
+            staticNode = temp;
         }
 
         return result;
     }
 
-    public ListNode MergeRecursivel(ListNode list1, ListNode list2) {
 
-        if (list1 == null) {
-            return list2;
+    public ListNode Merge2(ListNode list1,ListNode list2) {
+            if(list1 == null){
+                return list2;
+            }
+            if(list2 == null){
+                return list1;
+            }
+
+            ListNode mergeHead= new ListNode(0);
+            ListNode mergeTail = mergeHead;
+            while(list1!=null && list2!=null){
+                if(list1.val<list2.val){
+                    mergeTail.next = list1;
+                    list1 = list1.next;
+                }else{
+                    mergeTail.next = list2;
+                    list2 = list2.next;
+                }
+                mergeTail = mergeTail.next;
+            }
+            if(list2!=null){
+                mergeTail.next = list2;
+            }
+            if(list1!=null){
+                mergeTail.next = list1;
+            }
+            return mergeHead.next;
+    }
+
+    //recursively
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        //boundary condition
+        if(l1 == null){
+            return l2;
         }
-        if (list2 == null) {
-            return list1;
+        if(l2 == null){
+            return l1;
         }
 
-       if (l) {
+        ListNode mergeHead;
+        if(l1.val < l2.val){
+            mergeHead = l1;
+            mergeHead.next = mergeTwoLists(l1.next, l2);
+        }
+        else{
+            mergeHead = l2;
+            mergeHead.next = mergeTwoLists(l1, l2.next);
+        }
+        return mergeHead;
+    }
 
-       }
+    public static void main(String[] args) {
 
-
-        return result;
     }
 
 }
